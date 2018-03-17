@@ -121,8 +121,34 @@
 
     // Set-up the canvas and add our event handlers after the page has loaded
     function init() {
-        tarto = document.getElementById('sketchpadapp');
-        alert(tarto.offsetWidth);
+        vala = document.getElementById('nevvalaszt');
+        tarto = document.getElementById('rajzterulet');
+        g1 = document.getElementById('clearbutton');
+        g2 = document.getElementById('submitter');
+        cwi = tarto.offsetWidth;
+        chi = tarto.offsetHeight;
+        vala.style.width = cwi-30;
+        vala.style.height = 30;
+        vala.style.marginLeft = 10;
+        vala.style.marginTop = 5;
+        canv = document.createElement('canvas');
+        canv.id = 'sketchpad';
+        canv.width = cwi-30;
+        canv.height = chi-80;
+        canv.style.marginLeft = 10;
+        canv.style.marginTop = 5;
+        g1.style.width = 50+(cwi-160)/2;
+        g1.style.height = 30;
+        g1.style.marginLeft = 10;
+        g1.style.marginTop = 5;
+        g2.style.width = 50+(cwi-160)/2;
+        g2.style.height = 30;
+        g2.style.marginLeft = 35;
+        g2.style.marginTop = 5;
+        tarto.appendChild(vala);
+        tarto.appendChild(canv);
+        tarto.appendChild(g1);
+        tarto.appendChild(g2);
         // Get the specific canvas element from the HTML document
         canvas = document.getElementById('sketchpad');
 
@@ -157,14 +183,13 @@
 }
 .gombok {
     margin-top:10px;
-    width:100px%;
+    width:100%;
     margin-left: 5px;
     border-radius:4px;
 }
 #rajzterulet {
-    margin-top:10px;
-    height: 80%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
 }
 #sketchpad {
     margin-left: 5px;
@@ -173,7 +198,6 @@
     position:relative; /* Necessary for correct mouse co-ords in Firefox */
 }
 #clearbutton {
-    width: 40px;
     font-size: 15px;
     padding: 5px;
     -webkit-appearance: none;
@@ -181,28 +205,32 @@
     border: 1px solid #888;
 }
 #submitter {
-    width: 40px;
     font-size: 15px;
     padding: 5px;
     -webkit-appearance: none;
     background: #eee;
     border: 1px solid #888;
-    margin-left: 10px;
 }
 #username {
+  display: none;
+}
+#tarok {
   display: none;
 }
 </style>
 </head>
 
 <body onload="init()">
-    <div id="sketchpadapp">
-        <div id="rajzterulet">
-        </div>
-        <div class="gombok">
-          <input type="submit" value="Letöröl" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
-          <input type="submit" value="Elküld" id="submitter" onclick="sendCanvas(canvas,ctx);">
-        </div>
+    <div id="rajzterulet">
+    </div>
+    <div id="tarok">
+    <select id="nevvalaszt">
+        <option value="Anonymus">Kérlek, add meg a neved!</option>
+    </select>
+    <div id="gombok">
+        <input type="submit" value="Letöröl" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
+        <input type="submit" value="Elküld" id="submitter" onclick="sendCanvas(canvas,ctx);">
+    </div>
     </div>
 <div id=username>Poco</div>
 <form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfQBDMS3c4n7BGmDWwHA_s2e2fHaSWTpEtFbNl8dugMQe4Kwg/formResponse" method="POST" id="ss-form" target="_self" autocomplete="on" onsubmit="" style="display:none;>
