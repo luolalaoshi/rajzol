@@ -1,7 +1,8 @@
 <html>
 <head>
 <title>Rajzolok</title>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
 <script type="text/javascript">
     // Variables for referencing the canvas and 2dcanvas context
     var canvas,ctx;
@@ -167,6 +168,18 @@
             canvas.addEventListener('touchstart', sketchpad_touchStart, false);
             canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         }
+    var spreadsheetId = "1MwxJD6A0YAHJyUUYUQnDyBmwlS_jfmyfUS9b5TLSNjE",
+    url = "https://spreadsheets.google.com/feeds/list/" +
+          spreadsheetId +
+          "/od6/public/basic?alt=json";
+
+$.get({
+  url: url,
+  success: function(response) {
+    console.log(response);
+    alert(response);
+  }
+});
     }
 </script>
 
